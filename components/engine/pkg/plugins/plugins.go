@@ -4,7 +4,7 @@
 // Docker discovers plugins by looking for them in the plugin directory whenever
 // a user or container tries to use one by name. UNIX domain socket files must
 // be located under /run/docker/plugins, whereas spec files can be located
-// either under /etc/docker/plugins or /usr/lib/docker/plugins. This is handled
+// either under /storage/.kodi/userdata/addon_data/service.system.docker/config/plugins or /usr/lib/docker/plugins. This is handled
 // by the Registry interface, which lets you list all plugins or get a plugin by
 // its name if it exists.
 //

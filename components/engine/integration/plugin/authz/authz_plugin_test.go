@@ -56,15 +56,15 @@ func setupTestV1(t *testing.T) func() {
 	ctrl = &authorizationController{}
 	teardown := setupTest(t)
 
-	err := os.MkdirAll("/etc/docker/plugins", 0755)
+	err := os.MkdirAll("/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins", 0755)
 	assert.NilError(t, err)
 
-	fileName := fmt.Sprintf("/etc/docker/plugins/%s.spec", testAuthZPlugin)
+	fileName := fmt.Sprintf("/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins/%s.spec", testAuthZPlugin)
 	err = ioutil.WriteFile(fileName, []byte(server.URL), 0644)
 	assert.NilError(t, err)
 
 	return func() {
-		err := os.RemoveAll("/etc/docker/plugins")
+		err := os.RemoveAll("/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins")
 		assert.NilError(t, err)
 
 		teardown()

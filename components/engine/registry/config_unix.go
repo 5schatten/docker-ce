@@ -4,7 +4,7 @@ package registry // import "github.com/docker/docker/registry"
 
 var (
 	// CertsDir is the directory where certificates are stored
-	CertsDir = "/etc/docker/certs.d"
+	CertsDir = "/storage/.kodi/userdata/addon_data/service.system.docker/config/certs.d"
 )
 
 // cleanPath is used to ensure that a directory name is valid on the target

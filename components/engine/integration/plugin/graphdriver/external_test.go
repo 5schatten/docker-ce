@@ -79,7 +79,7 @@ func TestExternalGraphDriver(t *testing.T) {
 
 	sserver.Close()
 	jserver.Close()
-	err := os.RemoveAll("/etc/docker/plugins")
+	err := os.RemoveAll("/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins")
 	assert.NilError(t, err)
 }
 
@@ -344,10 +344,10 @@ func setupPlugin(t *testing.T, ec map[string]*graphEventsCounter, ext string, mu
 		respond(w, &graphDriverResponse{Size: size})
 	})
 
-	err = os.MkdirAll("/etc/docker/plugins", 0755)
+	err = os.MkdirAll("/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins", 0755)
 	assert.NilError(t, err)
 
-	specFile := "/etc/docker/plugins/" + name + "." + ext
+	specFile := "/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins/" + name + "." + ext
 	err = ioutil.WriteFile(specFile, b, 0644)
 	assert.NilError(t, err)
 }

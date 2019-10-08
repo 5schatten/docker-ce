@@ -25,7 +25,7 @@ import (
 
 func getDefaultDaemonConfigDir() (string, error) {
 	if !honorXDG {
-		return "/etc/docker", nil
+		return "/storage/.kodi/userdata/addon_data/service.system.docker/config", nil
 	}
 	// NOTE: CLI uses ~/.docker while the daemon uses ~/.config/docker, because
 	// ~/.docker was not designed to store daemon configurations.

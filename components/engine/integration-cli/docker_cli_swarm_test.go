@@ -776,14 +776,14 @@ func setupRemoteGlobalNetworkPlugin(c *testing.T, mux *http.ServeMux, url, netDr
 		}
 	})
 
-	err := os.MkdirAll("/etc/docker/plugins", 0755)
+	err := os.MkdirAll("/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins", 0755)
 	assert.NilError(c, err)
 
-	fileName := fmt.Sprintf("/etc/docker/plugins/%s.spec", netDrv)
+	fileName := fmt.Sprintf("/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins/%s.spec", netDrv)
 	err = ioutil.WriteFile(fileName, []byte(url), 0644)
 	assert.NilError(c, err)
 
-	ipamFileName := fmt.Sprintf("/etc/docker/plugins/%s.spec", ipamDrv)
+	ipamFileName := fmt.Sprintf("/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins/%s.spec", ipamDrv)
 	err = ioutil.WriteFile(ipamFileName, []byte(url), 0644)
 	assert.NilError(c, err)
 }
@@ -795,7 +795,7 @@ func (s *DockerSwarmSuite) TestSwarmNetworkPlugin(c *testing.T) {
 	setupRemoteGlobalNetworkPlugin(c, mux, s.server.URL, globalNetworkPlugin, globalIPAMPlugin)
 	defer func() {
 		s.server.Close()
-		err := os.RemoveAll("/etc/docker/plugins")
+		err := os.RemoveAll("/storage/.kodi/userdata/addon_data/service.system.docker/config/plugins")
 		assert.NilError(c, err)
 	}()
 
